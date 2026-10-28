@@ -597,3 +597,10 @@ As migrações estão em `src/main/resources/db/migration/` e seguem a numeraç�
 | V14 | User recommendations |
 | V15 | Comment & message reactions |
 | V16 | Adiciona refresh_token em auth_sessions |
+
+## Presença do usuário
+
+A migração V192 cria `user_presence`: estado escolhido e horário do último
+heartbeat por usuário. O serviço considera offline quem não envia heartbeat há
+dois minutos. O modo invisível continua armazenado como preferência própria,
+mas sua leitura pública retorna offline.
