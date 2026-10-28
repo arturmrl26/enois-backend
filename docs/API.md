@@ -64,6 +64,19 @@ Resposta (signup e login):
 
 ## Perfil
 
+### Presença
+
+O usuário autenticado consulta `GET /api/me/presence`, escolhe um estado com
+`PUT /api/me/presence` (`{"status":"AVAILABLE"}`) e mantém a sessão ativa com
+`POST /api/me/presence/heartbeat`. Os estados aceitos são `AVAILABLE`, `AWAY`,
+`DO_NOT_DISTURB` e `INVISIBLE`. Todas as respostas desses endpoints têm o formato
+`{"status":"..."}`.
+
+`GET /api/users/{username}/presence` devolve o estado público. Usuários sem
+atividade recente ou em modo invisível aparecem como `OFFLINE`. O modo
+`DO_NOT_DISTURB` mantém as notificações no aplicativo, mas silencia o push.
+
+
 | Método | Rota | Descrição | Autenticação |
 |---|---|---|---|
 | GET | `/api/me` | Perfil completo do usuário logado | Sim |
